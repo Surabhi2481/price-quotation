@@ -1,0 +1,81 @@
+﻿@model IEnumerable<A045PriceQuotation.Models.product>
+
+@{
+    ViewBag.Title = "userProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Product List</h2>
+
+<p>
+    @Html.ActionLink("Search Product", "userSearchProduct")
+
+</p>
+<p>
+    @Html.ActionLink("All products", "userProductList")
+</p>
+<p>
+    @Html.ActionLink("Your Price Quotation Request", "userQuotation")
+
+</p>
+
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.availability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.category)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.availability)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.color)
+    </td>
+
+    <td>
+
+        @Html.ActionLink("Details", "userProductDetails", new { id = item.productId }) |
+
+    </td>
+    <td>
+        @Html.ActionLink("Generate Price Quotation", "generateQuotation", new { id = item.productId })
+    </td>
+
+</tr>
+    }
+
+</table>

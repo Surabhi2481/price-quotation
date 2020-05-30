@@ -1,0 +1,80 @@
+﻿@model IEnumerable<A045PriceQuotation.Models.product>
+
+@{
+    ViewBag.Title = "vendorLogin1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Product List</h2>
+
+<br />
+<br />
+@Html.ActionLink("Your new Price Quotation Request are here.", "vendorQuotationList")
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.availability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.availability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "editProduct", new { id = item.productId }) |
+                @Html.ActionLink("Details", "productDetails", new { id = item.productId }) |
+                @Html.ActionLink("Delete", "deleteProduct" +
+               "", new { id = item.productId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@Html.ActionLink("Add new Product", "addProduct")
+
+<br />
+<br />
+
+@Html.ActionLink("Search new product", "vendorSearchProduct")
+

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<A045PriceQuotation.Models.pquotation>
+
+@{
+    ViewBag.Title = "vendorQuotationList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vendor Price Quotation List</h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.availability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quotation)
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.availability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quotation)
+            </td>
+
+            <td>
+                @Html.ActionLink("Approve", "vendorQuotation", new { id = item.quotationId }) |
+                @Html.ActionLink("Reject", "rejectQuotationVendor", new { id = item.quotationId })
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Go Back", "vendorLoginCheck")
+
+
+
+
+
